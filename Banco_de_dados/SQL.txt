@@ -1,0 +1,33 @@
+-- MySQL Workbench Synchronization
+-- Generated: 2017-04-30 15:09
+-- Model: New Model
+-- Version: 1.0
+-- Project: Name of the project
+-- Author: Gunnar
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+CREATE SCHEMA IF NOT EXISTS `syscomentario` DEFAULT CHARACTER SET utf8 ;
+
+CREATE TABLE IF NOT EXISTS `syscomentario`.`comentario` (
+  `cod` INT(6) NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(50) NOT NULL,
+  `mensagem` VARCHAR(500) NOT NULL,
+  `link` VARCHAR(100) NOT NULL,
+  `comentario_cod` INT(6) NOT NULL,
+  PRIMARY KEY (`cod`),
+  INDEX `fk_comentario_comentario_idx` (`comentario_cod` ASC),
+  CONSTRAINT `fk_comentario_comentario`
+    FOREIGN KEY (`comentario_cod`)
+    REFERENCES `syscomentario`.`comentario` (`cod`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
